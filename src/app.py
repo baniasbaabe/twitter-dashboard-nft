@@ -7,35 +7,23 @@ import plotly.express as px
 
 app = dash.Dash(__name__)
 
-# tweets = scrape_tweets("sengoku degens")
-# df = create_dataframe_from_tweets_list(tweets)
-
 df = pd.read_csv(r"C:\Code\twitter-dashboard-nft\src\test_df.csv")
 
-fig = px.scatter(df, x="Retweet_Count", y="Like_Count", size_max=60)
+df_most_tweets_by_user = df.groupby("Username")["ID"].count().nlargest(5)
+
+fig_most_tweets_by_user = px.bar(df_most_tweets_by_user, x=df_most_tweets_by_user.index, y="ID", text_auto=True)
 
 fig_geo = px.scatter_geo(df, lat="Latitude", lon="Longitude",
-#                      color="continent", # which column to use to set the color of markers
-                     hover_name="Country", # column added to hover information
-#                      size="Followers_Count", # size of markers
-                    projection="natural earth")
+                     color="Country",
+                     hover_name="Country", 
+                     projection="natural earth")
 
 app.layout = html.Div(className='row', children=[
     html.H1("NFT Trend"),
     html.P(children="Analyze the tweets and sentiment of a NFT collection",),
     html.Div(children=[
-        dcc.Graph(id="graph1", style={'display': 'inline-block'}, figure={
-                "data": [
-                    {
-                        "x": df.loc[:, "Date"],
-                        "y": df.loc[:, "Followers_Count"],
-                        "type": "lines",
-                    },
-                ],
-                "layout": {"title": "Test graph"},
-            },),
-        dcc.Graph(id="graph2", style={'display': 'inline-block'}, figure=fig),
-        dcc.Graph(id="graph3", style={'display': 'inline-block'}, figure=fig_geo)
+        dcc.Graph(id="most-tweets-by-user", style={'display': 'inline-block'}, figure=fig_most_tweets_by_user),
+        dcc.Graph(id="geo-map", style={'display': 'inline-block'}, figure=fig_geo)
     ])
 ])
 
