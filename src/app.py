@@ -1,3 +1,4 @@
+from ast import arg
 import re
 import string
 
@@ -16,6 +17,7 @@ from twitter_scraper import create_dataframe_from_tweets_list, scrape_tweets
 
 app = dash.Dash(__name__)
 app.title = "NFT Tracking Dashboard"
+app._favicon = ("favicon.png")
 
 app.layout = html.Div(
     className="row",
@@ -44,6 +46,13 @@ app.layout = html.Div(
             type="text",
             placeholder="NFT Collection",
             value="degods",
+            style={"text-align": "center"},
+        ),
+        dcc.Input(
+            id="input-number",
+            type="text",
+            placeholder="No. of Tweets",
+            value="100",
             style={"text-align": "center"},
         ),
         html.Button(id="hit-button", children="submit", style={"text-align": "center"}),
@@ -94,10 +103,12 @@ app.layout = html.Div(
     Output(component_id="sentiment", component_property="figure"),
     Input(component_id="hit-button", component_property="n_clicks"),
     State(component_id="input-handle", component_property="value"),
+    State(component_id="input-number", component_property="value"),
 )
-def display_value(nclicks, count_handle):
+def display_value(nclicks, count_handle, no_tweets):
 
-    tweets = scrape_tweets(count_handle, n=1000)
+    tweets = scrape_tweets(count_handle, n=int(no_tweets))
+    print(nclicks, count_handle, no_tweets)
     df = create_dataframe_from_tweets_list(tweets)
 
     df = preprocess_pipeline(df)
