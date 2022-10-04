@@ -13,7 +13,7 @@ import plotly.graph_objects as go
 from dash.dependencies import Input, Output, State
 
 from src.preprocess import preprocess_pipeline
-from twitter_scraper import create_dataframe_from_tweets_list, scrape_tweets
+from src.twitter_scraper import create_dataframe_from_tweets_list, scrape_tweets
 
 app = dash.Dash(__name__)
 app.title = "NFT Tracking Dashboard"
