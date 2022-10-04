@@ -1,0 +1,12 @@
+dash==2.6.1
+dash_core_components==2.0.0
+dash_html_components==2.0.0
+emoji==2.1.0
+joblib==1.2.0
+nltk==3.7
+numpy==1.23.3
+pandas==1.5.0
+plotly==5.10.0
+snscrape==0.4.3.20220106
+tweepy==4.10.1
+vaderSentiment==3.3.2
