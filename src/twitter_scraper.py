@@ -1,7 +1,5 @@
 import pandas as pd
 import snscrape.modules.twitter as sntwitter
-from joblib import Parallel, delayed
-
 HEADER = [
     "ID",
     "Date",

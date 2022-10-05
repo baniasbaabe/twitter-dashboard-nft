@@ -2,7 +2,6 @@ import re
 import string
 
 import emoji
-import nltk
 import numpy as np
 
 from nltk.corpus import stopwords
