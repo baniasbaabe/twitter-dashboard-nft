@@ -103,6 +103,9 @@ app.layout = html.Div(
 )
 def display_value(nclicks, count_handle, no_tweets):
 
+    if no_tweets > 1000:
+        no_tweets = 1000
+
     tweets = scrape_tweets(count_handle, n=int(no_tweets))
     print(nclicks, count_handle, no_tweets)
     df = create_dataframe_from_tweets_list(tweets)
