@@ -1,15 +1,14 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
 from dash.dependencies import Input, Output, State
 
-from src.preprocess import preprocess_pipeline
-from src.twitter_scraper import create_dataframe_from_tweets_list, scrape_tweets
+from preprocess import preprocess_pipeline
+from twitter_scraper import create_dataframe_from_tweets_list, scrape_tweets
 
 app = dash.Dash(__name__)
 app.title = "NFT Tracking Dashboard"
