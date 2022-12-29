@@ -7,6 +7,9 @@ With the hype around AI and Data Science, more and more people want to apply the
 
 Although the hype around NFT flattened a bit, trading with them made people rich AF! With this NFT Twitter Dashboard, you can analyze tweets about a specific NFT project (e.g. DeGods). See, what people are saying. Use it for yourself. Back your decisions by the sentiment of the community. 
 
+## 👨‍🏫️ Demo
+![](https://github.com/baniasbaabe/twitter-dashboard-nft/blob/main/assets/demo.gif)
+
 ## ⚡ Features
 
 * 😭 Sentiment Analysis
